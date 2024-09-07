@@ -94,7 +94,7 @@ function CartPage() {
               ))}
               <tr>
                 <td colSpan="5" className="px-6 py-3 text-right font-bold">Total Amount:</td>
-                <td className="px-6 py-3 text-sm font-bold">Kshs.{totalPrice.toFixed(2)}</td>
+                <td className="px-6 py-3 text-sm font-bold">Kshs. {totalPrice.toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
