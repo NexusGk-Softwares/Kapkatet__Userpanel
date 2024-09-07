@@ -6,8 +6,7 @@ import "./index.css";
 
 import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx'
-
-
+import Checkout from './components/Checkout.jsx'
 
 
 // Define the router configuration
@@ -24,8 +23,12 @@ const router = createBrowserRouter([
   {
     path:"/login",
     element:<Login/>
-  }
-  
+  },
+  {
+    path:"/checkout",
+    element:<Checkout/>
+  },
+ 
 ]);
 
 // Render the application

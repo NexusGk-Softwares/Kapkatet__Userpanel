@@ -6,7 +6,7 @@ import { useCart } from './CartContext';
 
 // Sample data for products
 const sampleProducts = [
-  { id: 1, name: 'Jersey Cow', breed: 'Jersey', age: 2, price: 1500, milkPerDay: 20, imageUrl: 'jersey.jpg' },
+  { id: 1, name: 'Jersey Cow', breed: 'Jersey', age: 2, price: 1500, milkPerDay: 20, imageUrl: 'https://www.istockphoto.com/photos/cow' },
   { id: 2, name: 'Holstein Cow', breed: 'Holstein', age: 3, price: 1800, milkPerDay: 25, imageUrl: 'holstein.jpg' },
   { id: 3, name: 'Guernsey Cow', breed: 'Guernsey', age: 1, price: 1400, milkPerDay: 18, imageUrl: 'guernsey.jpg' },
   { id: 4, name: 'Jersey Cow', breed: 'Jersey', age: 2, price: 1500, milkPerDay: 20, imageUrl: 'jersey.jpg' },
@@ -101,15 +101,19 @@ function ProductPage() {
 
               {/* Add to Cart Button */}
               <div className="flex justify-center mt-4">
-                <IconButton onClick={() => handleAddToCart(product)} color="primary">
-                  <ShoppingCartIcon />
-                </IconButton>
-                <span className="ml-2">Add to Cart</span>
-              </div>
-
-              <Link to={`/products/${product.id}`} className="block mt-4 text-blue-500 underline text-sm">
+               
+              <button onClick={() => handleAddToCart(product)} color="primary" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                </svg>
+                Buy now
+                </button>
+               </div>
+               <br />
+               <Link to={`/products/${product.id}`} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5">
                 View Details
               </Link>
+
             </div>
           ))
         ) : (
