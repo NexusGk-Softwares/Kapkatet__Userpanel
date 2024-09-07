@@ -9,7 +9,12 @@ const sampleProducts = [
   { id: 1, name: 'Jersey Cow', breed: 'Jersey', age: 2, price: 1500, milkPerDay: 20, imageUrl: 'jersey.jpg' },
   { id: 2, name: 'Holstein Cow', breed: 'Holstein', age: 3, price: 1800, milkPerDay: 25, imageUrl: 'holstein.jpg' },
   { id: 3, name: 'Guernsey Cow', breed: 'Guernsey', age: 1, price: 1400, milkPerDay: 18, imageUrl: 'guernsey.jpg' },
-  // Add more cows as necessary
+  { id: 4, name: 'Jersey Cow', breed: 'Jersey', age: 2, price: 1500, milkPerDay: 20, imageUrl: 'jersey.jpg' },
+  { id: 5, name: 'Holstein Cow', breed: 'Holstein', age: 3, price: 1800, milkPerDay: 25, imageUrl: 'holstein.jpg' },
+  { id: 6, name: 'Guernsey Cow', breed: 'Guernsey', age: 1, price: 1400, milkPerDay: 18, imageUrl: 'guernsey.jpg' },
+  { id: 7, name: 'Jersey Cow', breed: 'Jersey', age: 2, price: 1500, milkPerDay: 20, imageUrl: 'jersey.jpg' },
+  { id: 8, name: 'Holstein Cow', breed: 'Holstein', age: 3, price: 1800, milkPerDay: 25, imageUrl: 'holstein.jpg' },
+  
 ];
 
 function ProductPage() {
@@ -92,7 +97,7 @@ function ProductPage() {
               <p className="text-sm">Breed: {product.breed}</p>
               <p className="text-sm">Age: {product.age} years</p>
               <p className="text-sm">Milk per day: {product.milkPerDay} liters</p>
-              <p className="text-sm font-bold">Price: ${product.price}</p>
+              <p className="text-sm font-bold">Price: Kshs.{product.price}</p>
 
               {/* Add to Cart Button */}
               <div className="flex justify-center mt-4">
