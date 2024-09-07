@@ -12,7 +12,10 @@ function Navbar() {
   };
 
   return (
-    <div className="relative">
+    <div className="bg-blue-600 text-white py-4">
+     
+      
+     <div className="relative">
       <div className="flex justify-between items-center p-4">
         {/* Logo or Left Content */}
         <div className="text-lg font-bold">Logo</div>
@@ -93,6 +96,7 @@ function Navbar() {
           </li>
         </ul>
       </div>
+    </div>
     </div>
   );
 }
