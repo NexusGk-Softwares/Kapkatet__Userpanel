@@ -4,9 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 
-import Signup from './components/Signup.jsx';
-import Login from './components/Login.jsx'
-import Checkout from './components/Checkout.jsx'
+
+
+import CartPage from './components/CartPage.jsx';
+
+
 
 
 // Define the router configuration
@@ -16,19 +18,14 @@ const router = createBrowserRouter([
     element: <App />,
   },
  
+  
+  
   {
-    path: "/signup",
-    element: <Signup />,
+    path: "/cart",
+    element: <CartPage />,
   },
-  {
-    path:"/login",
-    element:<Login/>
-  },
-  {
-    path:"/checkout",
-    element:<Checkout/>
-  },
- 
+  
+  
 ]);
 
 // Render the application
