@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
-import { Typography, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
+import {
+  Typography,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+} from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import axios from 'axios';
 import LoginModal from './LoginModal'; // Import the LoginModal component
 
 function SignUpModal({ open, onClose }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isLoginOpen, setLoginOpen] = useState(false); // Manage login modal visibility
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [error, setError] = useState('');
 
-  // Function to handle opening the login modal and closing the signup modal
   const handleOpenLogin = () => {
-    onClose(); // Close the sign-up modal
-    setLoginOpen(true); // Open the login modal
+    onClose();
+    setLoginOpen(true);
   };
 
   const handleCloseLogin = () => {
@@ -48,9 +58,24 @@ function SignUpModal({ open, onClose }) {
       confirmPassword: '',
     },
     validationSchema,
-    onSubmit: (values) => {
-      // Handle form submission
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post('http://your-backend-url/api/user/register', {
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        });
+
+        if (response.data.success) {
+          console.log('Registration successful');
+          // Handle successful registration
+        } else {
+          setError(response.data.message); // Handle error message
+        }
+      } catch (error) {
+        console.error('Error during registration', error);
+        setError('An error occurred during registration.');
+      }
     },
   });
 
@@ -60,6 +85,11 @@ function SignUpModal({ open, onClose }) {
         <DialogTitle>Sign Up</DialogTitle>
         <DialogContent>
           <form onSubmit={formik.handleSubmit}>
+            {error && (
+              <Typography color="error" variant="body2" style={{ marginBottom: 16 }}>
+                {error}
+              </Typography>
+            )}
             <TextField
               label="Name"
               name="name"
@@ -149,7 +179,7 @@ function SignUpModal({ open, onClose }) {
               Already have an account?{' '}
               <span
                 style={{ textDecoration: 'none', color: '#3f51b5', cursor: 'pointer' }}
-                onClick={handleOpenLogin} // Call handleOpenLogin to switch modals
+                onClick={handleOpenLogin}
               >
                 Login
               </span>
@@ -163,7 +193,6 @@ function SignUpModal({ open, onClose }) {
         </DialogActions>
       </Dialog>
 
-      {/* Login Modal */}
       <LoginModal open={isLoginOpen} onClose={handleCloseLogin} />
     </>
   );

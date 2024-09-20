@@ -26,7 +26,7 @@ function Navbar({ cart }) {
     <div className="bg-blue-600 text-white py-4">
       <div className="relative">
         <div className="flex justify-between items-center p-4">
-          <div className="text-lg font-bold">Logo</div>
+          <div variant="h1" className="text-lg font-bold">Kapkatet Dairy Farm</div>
 
           <button className="md:hidden" onClick={toggleSidebar}>
             {isOpen ? <XMarkIcon className="h-6 w-6 text-black" /> : <Bars3Icon className="h-6 w-6 text-black" />}

@@ -1,7 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function CartPage({ cart=[] , removeFromCart }) {
+function CartPage({ removeFromCart }) {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      const response = await fetch('http://localhost/your_project_directory/api/cart.php');
+      const data = await response.json();
+      setCart(data);
+    };
+
+    fetchCartItems();
+  }, []);
+
   // Ensure cart is an array and has default values
   const [quantities, setQuantities] = useState(
     cart.reduce((acc, product) => {

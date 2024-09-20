@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 // Sample data for products
 const sampleProducts = [
   { id: 1, name: 'Jersey Cow', breed: 'Jersey', age: 2, price: 1500, milkPerDay: 20, imageUrl: 'https://i.pinimg.com/564x/4b/c8/69/4bc8694db892615e6888a489d073b3e1.jpg', description: 'Jersey cows are known for their high-quality milk and docile nature.' },
@@ -16,6 +16,19 @@ function ProductPage({ addToCart }) {
     price: '',
   });
   const [selectedProduct, setSelectedProduct] = useState(null); // Track selected product
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://your-backend-url/api/products');
+        setProducts(response.data); // Assuming response.data is the array of products
+      } catch (error) {
+        console.error('Error fetching products', error);
+        // Handle error (e.g., display an error message)
+      }
+    };
+
+    fetchProducts();
+  }, []); // Empty dependency array to run only once on mount
 
   const handleFilterChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
